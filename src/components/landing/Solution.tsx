@@ -1,5 +1,4 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useState, useEffect, useRef } from "react";
 import workspaceMockup from "@/assets/workspace-mockup.png";
 
 const features = [
@@ -12,15 +11,6 @@ const features = [
 
 export default function Solution() {
   const ref = useScrollAnimation();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>();
-
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % features.length);
-    }, 2500);
-    return () => clearInterval(intervalRef.current);
-  }, []);
 
   return (
     <section id="features" className="py-20 lg:py-28 bg-secondary">
@@ -31,23 +21,10 @@ export default function Solution() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`p-5 rounded-xl transition-all duration-300 cursor-pointer ${
-                  i === activeIndex
-                    ? "bg-background shadow-md border border-primary/20"
-                    : "hover:bg-background/50"
-                }`}
-                onClick={() => {
-                  setActiveIndex(i);
-                  clearInterval(intervalRef.current);
-                }}
-              >
+            {features.map((f) => (
+              <div key={f.title} className="p-5 rounded-xl">
                 <div className="flex items-start gap-3">
-                  <span className={`mt-0.5 text-sm font-bold ${i === activeIndex ? "text-primary" : "text-muted-foreground"}`}>
-                    ✦
-                  </span>
+                  <span className="mt-0.5 text-sm font-bold text-primary">✦</span>
                   <div>
                     <h3 className="font-semibold mb-0.5">{f.title}</h3>
                     <p className="text-sm text-muted-foreground">{f.desc}</p>
