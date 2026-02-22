@@ -60,7 +60,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto animate-fade-up" style={{ animationDelay: "1.7s" }}>
+        <div className="max-w-6xl mx-auto animate-fade-up" style={{ animationDelay: "1.7s" }}>
           <img
             src={heroMockup}
             alt="Hublo client workspace shown on laptop and phone"
