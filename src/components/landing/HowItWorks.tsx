@@ -33,7 +33,7 @@ export default function HowItWorks() {
 
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connecting line */}
-          <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-px bg-border" />
+          
 
           {steps.map((step) => (
             <div key={step.num} className="text-center relative">
